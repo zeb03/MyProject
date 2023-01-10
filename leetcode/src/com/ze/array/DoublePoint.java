@@ -1,20 +1,20 @@
-package com.ze.method;
+package com.ze.array;
 
 /**
  * @author ze
  * @creat 2022-09-25 13:25
  */
-/*
-problem : 指定一个整数，删除给定的整数数组中存在的目标值
 
-method : 使用双指针,有两种方法，首尾指针效率更高，但会改变数组顺序
- */
 public class DoublePoint {
 
-    public int removeElement(int[] nums, int val) {
+    /*
+    problem : 指定一个整数，删除给定的整数数组中存在的目标值
+    method : 使用双指针,有两种方法，首尾指针效率更高，但会改变数组顺序
+     */
+    public int removeElement1(int[] nums, int val) {
         int fast, slow = 0;
         int len = nums.length;
-        if (nums == null || len == 0) {
+        if (len == 0) {
             return 0;
         }
         for (fast = 0; fast < len; fast++) {
@@ -28,14 +28,19 @@ public class DoublePoint {
     }
 
     //优化，但会改变数组顺序
-    public int removeElement1(int[] nums, int val) {
-        int left = 0, right = nums.length;
-        while (left < right) {
-            if (nums[left] == val) {
-                nums[left] = nums[right - 1];
+    public int removeElement2(int[] nums, int val) {
+        int left, right;
+        left = 0;
+        right = nums.length - 1;
+        while (left <= right) {
+            while (right >= left && nums[right] == val) {
                 right--;
-            } else {
+            }
+            while (right >= left && nums[left] != val) {
                 left++;
+            }
+            if (left <= right) {
+                nums[left++] = nums[right--];
             }
         }
         return left;

@@ -2,7 +2,6 @@ package com.ze.array;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -28,4 +27,5 @@ public class Merge {
         list.add(temp);
         return list.toArray(new int[list.size()][2]);
     }
+
 }

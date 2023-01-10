@@ -1,4 +1,5 @@
-package com.ze.simple;
+package com.ze.middle;
+
 
 import org.junit.Test;
 
@@ -20,20 +21,20 @@ public class LongestCommonStr {
         String prefix = strs[0];
         int len = strs.length;
         for (int i = 1; i < len; i++) {
-            prefix = newPrefix(prefix,strs[i]);
-            if(prefix.length() == 0){
+            prefix = newPrefix(prefix, strs[i]);
+            if (prefix.length() == 0) {
                 break;
             }
         }
         return prefix;
     }
 
-    public String newPrefix(String str1, String str2){
+    public String newPrefix(String str1, String str2) {
         int index = 0;
-        int minLen = Math.min(str1.length(),str2.length());
-        while(index < minLen && str1.charAt(index) == str2.charAt(index)){
+        int minLen = Math.min(str1.length(), str2.length());
+        while (index < minLen && str1.charAt(index) == str2.charAt(index)) {
             index++;
         }
-        return str1.substring(0,index);
+        return str1.substring(0, index);
     }
 }
